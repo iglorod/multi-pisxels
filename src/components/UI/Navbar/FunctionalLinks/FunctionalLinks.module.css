@@ -1,0 +1,5 @@
+.linksArea {
+    display: flex;
+    justify-self: start;
+    justify-content: space-around;
+}

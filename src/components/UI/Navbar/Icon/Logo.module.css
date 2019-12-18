@@ -1,0 +1,20 @@
+.logo {
+    justify-self: flex-start;
+    transition: all .3s;
+}
+
+.logo:hover {
+    transform: translateY(5px);
+}
+
+.logo svg {
+    vertical-align: middle;
+}
+
+.logo g {
+    transition: all .3s;
+}
+
+.logo:hover g {
+    fill: white;
+}

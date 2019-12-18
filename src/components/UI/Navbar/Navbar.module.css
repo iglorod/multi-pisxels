@@ -1,0 +1,9 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+}

@@ -1,0 +1,11 @@
+.authItem {
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 10px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.authItem:hover {
+    color: #e50914;
+}

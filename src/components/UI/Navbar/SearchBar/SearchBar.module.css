@@ -1,0 +1,23 @@
+.searchBar {
+    background: transparent;
+    border-radius: 30px;
+    border: 2px solid rgba(129, 129, 129, 0.1);
+    color: white;
+    box-shadow: none;
+    padding: 8px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 100;
+    font-family: 'Lato', sans-serif;
+    width: 50%;
+    transition: .3s ease-out;
+}
+
+.searchBar:focus {
+    border-color: #e50914;
+    width: 70%;
+}
+
+.searchBlock {
+    flex-grow: 4;
+}
