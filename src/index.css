@@ -5,4 +5,11 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 1000px;
+}
+
+.slick-slide, 
+.slick-active {
+  outline: none;
+  border: none;
 }

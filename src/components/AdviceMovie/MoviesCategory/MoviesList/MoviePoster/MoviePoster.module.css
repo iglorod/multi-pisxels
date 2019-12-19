@@ -1,0 +1,113 @@
+.blackBackground {
+    width: 95%;
+    padding: 40px 0;
+    margin: auto;
+    background: black;
+}
+
+.imageBackground {
+    padding: 40% 0px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all .3s ease-out;
+}
+
+.hidenModal {
+    position: absolute;
+    margin-top: -50%;
+    padding: 0 10px;
+    width: 91%;
+    opacity: 0;
+}
+
+.blackBackground:hover .hidenModal {
+    opacity: 1;
+}
+
+.blackBackground:hover .imageBackground {
+    background-size: 150% !important;
+    z-index: 0 !important;
+}
+
+.title p {
+    font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    font-weight: 100;
+    text-align: left;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+.voteAverage {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    font-family: 'Lato', sans-serif;
+}
+
+.overview {
+    font-size: 14px;
+    font-weight: 100;
+    font-family: 'Lato', sans-serif;
+    text-align: justify;
+    padding-top: 20%;
+    max-height: 80px;
+    overflow: auto;
+}
+
+.favorite {
+    border: 2px solid rgb(255, 255, 255, 0.3);
+    border-radius: 50px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    top: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.favoriteIcons {
+    position: absolute;
+    transition: all .2s;
+}
+
+.favoriteIcons ion-icon {
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+}
+
+.favorite:hover {
+    border-color: white;
+}
+
+.favorite:hover .favoriteIcons {
+    margin-top: -30px;
+}
+
+.overview::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.overview::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+
+.overview::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: rgba(129, 129, 129, 0.1);
+    opacity: .3;
+}
