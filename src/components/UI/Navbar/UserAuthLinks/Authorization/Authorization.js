@@ -1,10 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import classes from './Authorization.module.css';
 
 const authorization = (props) => {
     return (
-        <div className={classes.authItem}>{props.children}</div>
+        <NavLink className={classes.authItem} to={props.url} activeClassName={classes.active}>{props.children}</NavLink>
     )
 }
 

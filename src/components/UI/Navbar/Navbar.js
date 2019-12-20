@@ -4,7 +4,7 @@ import classes from './Navbar.module.css';
 import Logo from './Icon/Logo';
 import FunctionalLinks from './FunctionalLinks/FunctionalLinks';
 import SearchBar from './SearchBar/SearchBar';
-import UserAuth from './UserAuth/UserAuth';
+import UserAuth from './UserAuthLinks/UserAuthLinks';
 
 const navbar = () => {
     return (

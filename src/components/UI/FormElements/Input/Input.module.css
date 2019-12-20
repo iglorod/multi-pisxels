@@ -1,0 +1,32 @@
+.input {
+    background: transparent;
+    border-radius: 15px;
+    border: 2px solid rgba(129, 129, 129, 0.1);
+    color: white;
+    box-shadow: none;
+    padding: 8px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 100;
+    font-family: 'Lato', sans-serif;
+    width: 90%;
+    transition: .3s ease-out;
+}
+
+.input:focus {
+    border-color: rgba(209, 209, 209, 0.2);
+    width: 100%;
+}
+
+.notValidInput {
+    border-color: #e50914;
+}
+
+.notValidMessage {
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    color: #e50914;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    margin: 0;
+}

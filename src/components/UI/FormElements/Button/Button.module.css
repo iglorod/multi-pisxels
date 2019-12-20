@@ -1,0 +1,19 @@
+.submitButton {
+    border: 2px solid rgba(129, 129, 129, 0.1);
+    color: rgba(129, 129, 129, 0.1);
+    padding: 10px 15px;
+    border-radius: 25px;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: all .3s;
+}
+
+.submitButtonEnabled {
+    color: #e50914;
+    border-color: #e50914;
+}
+
+.submitButtonEnabled:hover, .submitButtonEnabled:active {
+    padding: 12px 25px;
+}

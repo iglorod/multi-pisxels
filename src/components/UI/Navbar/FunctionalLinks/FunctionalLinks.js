@@ -6,10 +6,8 @@ import FunctionalLink from './FunctionalLink/FunctionalLink';
 const funcitonalLinks = () => {
     return (
         <div className={classes.linksArea}>
-            <FunctionalLink>Browse</FunctionalLink>
-            <FunctionalLink>My list</FunctionalLink>
-            <FunctionalLink>Top picks</FunctionalLink>
-            <FunctionalLink>Recent</FunctionalLink>
+            <FunctionalLink url='/my-list'>My list</FunctionalLink>
+            <FunctionalLink url='/'>Top picks</FunctionalLink>
         </div>
     );
 }

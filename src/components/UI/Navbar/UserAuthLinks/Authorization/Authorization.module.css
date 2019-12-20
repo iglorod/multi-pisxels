@@ -4,8 +4,14 @@
     padding: 10px;
     cursor: pointer;
     transition: all .3s;
+    color: white;
+    text-decoration: none;
 }
 
 .authItem:hover {
+    color: #e50914;
+}
+
+.active {
     color: #e50914;
 }
