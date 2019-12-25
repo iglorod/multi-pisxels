@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import classes from './SignUp.module.css';
 import Input from '../../UI/FormElements/Input/Input';
 import Button from '../../UI/FormElements/Button/Button';
 import { validation } from '../../../utility/validation';
 
-const SignUp = () => {
+const SignUp = (props) => {
     const [stateInputs, setStateInputs] = useState({
         email: {
             config: {
@@ -61,7 +62,7 @@ const SignUp = () => {
         const validationRules = stateInputs[inputName].validationRules;
         const originalPassword = stateInputs.password_original.value;
         const [isValid, validationMessage] = validation(event.target.value, validationRules, originalPassword);
-       
+
         stateInputsClone[inputName].value = newValue;
         stateInputsClone[inputName].isValid = isValid;
         stateInputsClone[inputName].validationMessage = validationMessage;
@@ -76,10 +77,10 @@ const SignUp = () => {
             ...stateInputs
         }
 
-    const validationRules = stateInputs[inputName].validationRules;
-    const originalPassword = stateInputs.password_original.value;
-    const [isValid, validationMessage] = validation(event.target.value, validationRules, originalPassword);
-        
+        const validationRules = stateInputs[inputName].validationRules;
+        const originalPassword = stateInputs.password_original.value;
+        const [isValid, validationMessage] = validation(event.target.value, validationRules, originalPassword);
+
         stateInputsClone[inputName].isTouched = true;
         stateInputsClone[inputName].validationMessage = validationMessage;
         stateInputsClone[inputName].isValid = isValid;
@@ -91,6 +92,19 @@ const SignUp = () => {
 
     const submitHandler = (event) => {
         event.preventDefault();
+
+        const authData = {
+            email: stateInputs.email.value,
+            password: stateInputs.password_original.value,
+            returnSecureToken: true
+        }
+        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBNs1_WBfiLcb2MgQQGccWK1yZPXxnXN7E', authData)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     let inputs = [];

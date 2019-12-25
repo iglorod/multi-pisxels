@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import classes from './SignIn.module.css';
 import Input from '../../UI/FormElements/Input/Input';
 import Button from '../../UI/FormElements/Button/Button';
 import { validation } from '../../../utility/validation';
 
-const SignIn = () => {
+const SignIn = (props) => {
     const [stateInputs, setStateInputs] = useState({
         email: {
             config: {
@@ -74,6 +75,27 @@ const SignIn = () => {
 
     const submitHandler = (event) => {
         event.preventDefault();
+
+        const authData = {
+            email: stateInputs.email.value,
+            password: stateInputs.password.value,
+            returnSecureToken: true
+        }
+        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBNs1_WBfiLcb2MgQQGccWK1yZPXxnXN7E', authData)
+        .then(response => {
+            const expiresIn = new Date().getTime() + response.data.expiresIn;
+            
+            localStorage.setItem('email', response.data.email);
+            localStorage.setItem('id', response.data.localId);
+            localStorage.setItem('idToken', response.data.idToken);
+            localStorage.setItem('refreshToken', response.data.refreshToken);
+            localStorage.setItem('expiresIn', expiresIn);
+
+            props.history.push('/');
+        })
+        .catch(error => {
+            console.log(error)  
+        })
     }
 
     let inputs = [];

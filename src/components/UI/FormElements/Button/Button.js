@@ -3,11 +3,13 @@ import React from 'react';
 import classes from './Button.module.css';
 
 const button = props => {
-    let buttonClasses = [classes.submitButton];
-    if (props.allIsValid) buttonClasses.push(classes.submitButtonEnabled);
+    if (props.allIsValid)
+        return (
+            <button className={classes.submitButton + ' ' + classes.submitButtonEnabled} >{props.text}</button>
+        )
 
     return (
-        <button className={buttonClasses.join(' ')}>{props.text}</button>
+        <button className={classes.submitButton} disabled >{props.text}</button>
     )
 }
 
