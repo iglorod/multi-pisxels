@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
 import classes from './SignUp.module.css';
 import Input from '../../UI/FormElements/Input/Input';
 import Button from '../../UI/FormElements/Button/Button';
 import { validation } from '../../../utility/validation';
+import { AuthContext } from '../../../context/context';
 
 const SignUp = (props) => {
+    const authContext = useContext(AuthContext);
+
     const [stateInputs, setStateInputs] = useState({
         email: {
             config: {
@@ -98,13 +101,12 @@ const SignUp = (props) => {
             password: stateInputs.password_original.value,
             returnSecureToken: true
         }
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBNs1_WBfiLcb2MgQQGccWK1yZPXxnXN7E', authData)
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+
+        const signUpPromise = new Promise((resolve, reject) => {
+            authContext.signUp(authData, resolve, reject);
+        })
+        
+        signUpPromise.then(() => props.history.push('/'), error => console.error(error.message));
     }
 
     let inputs = [];

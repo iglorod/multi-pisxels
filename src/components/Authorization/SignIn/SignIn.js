@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
 import classes from './SignIn.module.css';
 import Input from '../../UI/FormElements/Input/Input';
 import Button from '../../UI/FormElements/Button/Button';
 import { validation } from '../../../utility/validation';
+import { AuthContext } from '../../../context/context';
 
 const SignIn = (props) => {
+    const authContext = useContext(AuthContext);
+
     const [stateInputs, setStateInputs] = useState({
         email: {
             config: {
@@ -81,21 +84,12 @@ const SignIn = (props) => {
             password: stateInputs.password.value,
             returnSecureToken: true
         }
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBNs1_WBfiLcb2MgQQGccWK1yZPXxnXN7E', authData)
-        .then(response => {
-            const expiresIn = new Date().getTime() + response.data.expiresIn;
-            
-            localStorage.setItem('email', response.data.email);
-            localStorage.setItem('id', response.data.localId);
-            localStorage.setItem('idToken', response.data.idToken);
-            localStorage.setItem('refreshToken', response.data.refreshToken);
-            localStorage.setItem('expiresIn', expiresIn);
 
-            props.history.push('/');
+        const signInPromise = new Promise((resolve, reject) => {
+            authContext.signIn(authData, resolve, reject);
         })
-        .catch(error => {
-            console.log(error)  
-        })
+        
+        signInPromise.then(() => props.history.push('/'), error => console.error(error.message));
     }
 
     let inputs = [];

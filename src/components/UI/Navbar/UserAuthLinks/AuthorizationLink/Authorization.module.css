@@ -15,3 +15,16 @@
 .active {
     color: #e50914;
 }
+
+.logoutItem {
+    display: inline;
+    font-size: 14px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all .3s;
+    color: white;
+}
+
+.logoutItem:hover {
+    color: #e50914;
+}

@@ -1,0 +1,10 @@
+.modalContainer {
+    width: 40vw;
+    height: 50vh;
+    border-radius: 25px;
+    background: white;
+    z-index: 700;
+    margin: auto;
+    margin-top: 25vh;
+    box-shadow: inset 0px 0px 15px 4px rgba(0, 0, 0, 0.1)
+}
