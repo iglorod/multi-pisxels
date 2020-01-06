@@ -3,12 +3,12 @@ import React from 'react';
 import classes from './ModalContainer.module.css';
 
 const modalContainer = (props) => {
-    let buttons = <button onClick={props.close} className={classes.closeButton}>Cancel</button>;
+    let buttons = <div className={classes.buttonsContainer}><button onClick={props.close} className={classes.closeButton}>Cancel</button></div>;
     if (props.button)
         buttons = (
-            <div>
+            <div className={classes.buttonsContainer}>
                 <button onClick={props.button.action} className={classes.actionButton}>{props.button.text}</button>
-                <button onClick={props.close} className={classes.closeButton}>Cancel</button>
+                <button onClick={props.close} className={classes.cancelButton}>Cancel</button>
             </div>
         )
 

@@ -40,6 +40,7 @@ const UserAuth = () => {
             <Modal
                 show={logoutPressed}
                 title='Are you sure?'
+                text='After you log out you will not be able to pick your favorite movies'
                 button={{
                     text: 'Logout',
                     action: logoutHandler

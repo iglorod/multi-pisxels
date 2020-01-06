@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import ModalContainer from './ModalContainer/ModalContainer';
 import classes from './Modal.module.css';

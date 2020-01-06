@@ -62,8 +62,8 @@
     overflow: auto;
 }
 
-.favorite {
-    border: 2px solid rgb(255, 255, 255, 0.3);
+.favorite,
+.choosed {
     border-radius: 50px;
     position: absolute;
     width: 30px;
@@ -73,6 +73,14 @@
     overflow: hidden;
     cursor: pointer;
     transition: all .3s;
+}
+
+.favorite {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.choosed {
+    border: 2px solid rgba(184, 29, 36, 0.8);
 }
 
 .favoriteIcons {
@@ -90,7 +98,23 @@
     border-color: white;
 }
 
+.choosed ion-icon {
+    color: rgba(184, 29, 36, 0.8);
+}
+
+.choosed:hover ion-icon {
+    color: rgb(184, 29, 36);
+}
+
+.choosed:hover {
+    border-color: rgb(184, 29, 36);
+}
+
 .favorite:hover .favoriteIcons {
+    margin-top: -30px;
+}
+
+.choosed .favoriteIcons {
     margin-top: -30px;
 }
 

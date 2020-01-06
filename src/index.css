@@ -13,3 +13,8 @@ body {
   outline: none;
   border: none;
 }
+
+.slick-prev,
+.slick-next {
+  z-index: 100;
+}

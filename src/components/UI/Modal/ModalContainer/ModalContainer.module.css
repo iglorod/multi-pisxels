@@ -8,3 +8,49 @@
     margin-top: 25vh;
     box-shadow: inset 0px 0px 15px 4px rgba(0, 0, 0, 0.1)
 }
+
+.title {
+    color: rgb(184, 29, 36);
+    margin: 0;
+    padding: 20px 20px;
+}
+
+.text {
+    color: black;
+    padding: 20px 20px;
+    font-size: 18px;
+}
+
+.buttonsContainer {
+    margin-top: 15vh;
+}
+
+button {
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: none;
+    outline: none;
+    margin: 0 15px;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.actionButton {
+    background: rgb(184, 29, 36);
+}
+
+.actionButton:hover {
+    background: rgb(185, 72, 77);
+}
+
+.cancelButton {
+    background: rgb(119, 119, 119);
+}
+
+.cancelButton:hover {
+    background: rgb(180, 180, 180);
+}
