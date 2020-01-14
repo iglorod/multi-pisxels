@@ -1,6 +1,6 @@
 .blackBackground {
     width: 95%;
-    padding: 40px 0;
+    padding: 10px 0;
     margin: auto;
     background: black;
 }
@@ -16,7 +16,7 @@
 
 .hidenModal {
     position: absolute;
-    margin-top: -50%;
+    margin-top: -40%;
     padding: 0 10px;
     width: 91%;
     opacity: 0;

@@ -10,7 +10,9 @@ const MoviePoster = (props) => {
     }
 
     let favorite = (
-        <div className={classes.favorite} onClick={props.favoriteClick}>
+        <div
+            className={props.isFavorite ? classes.choosed : classes.favorite}
+            onClick={props.favoriteClick}>
             <div className={classes.favoriteIcons}>
                 <ion-icon name="add"></ion-icon>
                 <ion-icon name="checkmark"></ion-icon>

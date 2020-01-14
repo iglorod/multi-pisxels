@@ -1,28 +1,79 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import Slider from "react-slick";
 import axios from 'axios';
 
 import classes from './MoviesList.module.css';
 import MoviePoster from './MoviePoster/MoviePoster';
+import { AuthContext } from '../../../../context/context';
 
-const movieSnapShot = (props) => {
+const MovieSnapShot = (props) => {
+    let context = useContext(AuthContext);
+    let [favoriteMovies, setFavoriteMovies] = useState([]);
+
+    if (context.isAuth) {
+        let queryParams = '?auth=' + localStorage.getItem('idToken') + '&orderBy="userId"&equalTo="' + localStorage.getItem('id') + '"';
+
+        axios.get('https://multipixels-df150.firebaseio.com/favorite.json/' + queryParams)
+            .then(response => {
+                setFavoriteMovies(Object.values(response.data).map(item => item.movieId));
+            })
+            .catch(error => console.error(error));
+    }
+
     let settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 3
     };
-    
+
     const favoriteClickHandler = (movieId) => {
-        axios.get('https://multipixels-df150.firebaseio.com/favorite.json/id?orderBy="userId"&equalTo="' +  localStorage.getItem('id') + '"')
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
-/*
-        const favorite = {
-            movieId: movieId,
-            userId: localStorage.getItem('id')
-        }
-        axios.post('https://multipixels-df150.firebaseio.com/favorite.json', favorite);*/
+        let queryParams = '?auth=' + localStorage.getItem('idToken') + '&orderBy="userId"&equalTo="' + localStorage.getItem('id') + '"';
+
+        axios.get('https://multipixels-df150.firebaseio.com/favorite.json/' + queryParams)
+            .then(response => {
+                let responseArray = [];
+                for (let value of Object.values(response.data)) {
+                    responseArray.push(value);
+                }
+
+                const movieWasFavorite = responseArray.reduce((wasFavorite, item) => (item.movieId === movieId) || wasFavorite, false);
+
+                if (movieWasFavorite === true) {
+                    let firebaseFavoriteId = null;
+                    for (let key in response.data) {
+                        if (response.data[key].movieId === movieId) {
+                            firebaseFavoriteId = key;
+                            break;
+                        }
+                    }
+
+                    queryParams = '?auth=' + localStorage.getItem('idToken');
+                    axios.delete('https://multipixels-df150.firebaseio.com/favorite/' + firebaseFavoriteId + '.json/' + queryParams)
+                        .then(() => {
+                            let favoriteMoviesClone = [...favoriteMovies];
+                            const removeIndex = favoriteMovies.indexOf(movieId);
+                            favoriteMoviesClone.splice(removeIndex, 1);
+                            setFavoriteMovies([...favoriteMoviesClone]);
+                        });
+                } else {
+                    const favorite = {
+                        movieId: movieId,
+                        userId: localStorage.getItem('id')
+                    }
+
+                    axios.post('https://multipixels-df150.firebaseio.com/favorite.json?auth=' + localStorage.getItem('idToken'), favorite)
+                        .then(() => {
+                            setFavoriteMovies(prevState => {
+                                return ([
+                                    ...prevState,
+                                    movieId
+                                ]);
+                            })
+                        });
+                }
+            })
+            .catch(error => console.log(error));
     }
 
     return (
@@ -37,6 +88,7 @@ const movieSnapShot = (props) => {
                                     title={movie.title}
                                     overview={movie.overview}
                                     vote_average={movie.vote_average}
+                                    isFavorite={favoriteMovies.includes(movie.id)}
                                     favoriteClick={favoriteClickHandler.bind(this, movie.id)} />
                             </div>
                         )
@@ -47,4 +99,4 @@ const movieSnapShot = (props) => {
     )
 }
 
-export default movieSnapShot;
+export default MovieSnapShot;

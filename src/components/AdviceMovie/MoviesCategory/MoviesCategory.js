@@ -4,26 +4,10 @@ import AdviceCategory from './AdviceCategory/AdviceCategory';
 import MoviesList from './MoviesList/MoviesList';
 
 const moviesCategory = (props) => {
-    /*return (
-        <div>
-            {
-                props.movies.map(movie => {
-                    return (
-                        <div>
-                            <AdviceCategory>{props.category}</AdviceCategory>
-                            <MoviesList data={lalia.results} />
-                        </div>
-                    )
-
-                })
-            }
-        </div>
-    )*/
-
     return (
         <div>
-            <AdviceCategory category={props.category} />
-            <MoviesList data={lalia.results} />
+            <AdviceCategory category={props.data.category} />
+            <MoviesList data={lalia.results/*props.data.movies*/} />
         </div>
     )
 }
