@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './MultiPixels.module.css';
 import AdviceMovie from '../../components/AdviceMovie/AdviceMovie';
+import { AuthContext } from '../../context/context';
 
 class MultiPixels extends Component {
     componentDidMount() {
@@ -9,12 +10,13 @@ class MultiPixels extends Component {
     }
 
     isAuthorized = () => {
-        if (localStorage.getItem('email' !== null)) {
+        if (localStorage.getItem('refreshToken') !== null) {
             const expiresIn = localStorage.getItem('expiresIn');
-            if (+ new Date() > expiresIn) {
-                //genereate new token}
+            if (+(new Date().getTime() / 1000).toFixed(0) >= expiresIn) {
+                this.context.refreshToken();
             }
-            //authorizationHandler();
+
+            this.context.signInByLocalData();
         }
     }
 
@@ -26,5 +28,7 @@ class MultiPixels extends Component {
         )
     }
 }
+
+MultiPixels.contextType = AuthContext;
 
 export default MultiPixels;
