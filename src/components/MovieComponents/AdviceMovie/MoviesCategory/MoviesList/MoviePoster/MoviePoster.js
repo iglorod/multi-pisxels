@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import classes from './MoviePoster.module.css';
-import { AuthContext } from '../../../../../context/context';
+import { AuthContext } from '../../../../../../context/context';
 
 const MoviePoster = (props) => {
     const context = useContext(AuthContext);

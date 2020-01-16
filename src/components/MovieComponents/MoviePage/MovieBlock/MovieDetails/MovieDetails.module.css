@@ -1,0 +1,45 @@
+.title {
+    font-size: 40px;
+    font-family: 'IM Fell Great Primer SC', serif;
+    padding: 20px 20px;
+}
+
+.overview {
+    font-size: 16px;
+    font-family: 'Titillium Web', sans-serif;
+    padding: 10px 20px 20px 20px;
+    text-align: justify;
+}
+
+.genres {
+    color: #b81d24;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 28px;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.companies {
+    color: white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+    text-align: left;
+    padding: 0 20px 40px 20px;
+}
+
+.additionalInfo {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+.additionalTitle {
+    color: white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+}
+
+.additionalData {
+    color: #b81d24;
+    font-size: 22px;
+}

@@ -1,0 +1,44 @@
+.backdrop {
+    width: 95vw;
+    position: absolute;
+    height: 800px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.latestMovie {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-basis: 50%;
+}
+
+.latestMovie > div {
+    z-index: 200;
+}
+
+.title {
+    font-family: 'IM Fell Great Primer SC', serif;
+    font-size: 60px;
+}
+
+.overview {
+    max-width: 600px;
+    font-size: 14px;
+    font-family: 'Titillium Web', sans-serif;
+    padding: 20px 0;
+    margin: auto;
+}
+
+.moviePoster {
+    position: relative;
+}
+
+.moviePoster img:nth-child(2) {
+    position: absolute;
+    width: 80px;
+    left: -20px;
+    top: -20px;
+}

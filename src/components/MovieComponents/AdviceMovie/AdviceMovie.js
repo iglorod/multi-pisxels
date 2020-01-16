@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import MoviesCategory from './MoviesCategory/MoviesCategory'
-
-let apiKey = '9a709fd5f22444612e3adac728d5e164';
+import * as common from '../../../common/common';
 
 let adviceLinks = {
-    popular: 'https://api.themoviedb.org/3/movie/popular?api_key=' + apiKey + '&language=en-US&page=1',
-    now_playing: 'https://api.themoviedb.org/3/movie/now_playing?api_key=' + apiKey + '&language=en-US&page=1',
+    popular: 'https://api.themoviedb.org/3/movie/popular?api_key=' + common.movieApiKey + '&language=en-US&page=1',
+    now_playing: 'https://api.themoviedb.org/3/movie/now_playing?api_key=' + common.movieApiKey + '&language=en-US&page=1',
    // latest: 'https://api.themoviedb.org/3/movie/latest?api_key=' + apiKey + '&language=en-US',
-    top_rated: 'https://api.themoviedb.org/3/movie/top_rated?api_key=' + apiKey + '&language=en-US&page=1',
-    upcoming: 'https://api.themoviedb.org/3/movie/upcoming?api_key=' + apiKey + '&language=en-US&page=1'
+    top_rated: 'https://api.themoviedb.org/3/movie/top_rated?api_key=' + common.movieApiKey + '&language=en-US&page=1',
+    upcoming: 'https://api.themoviedb.org/3/movie/upcoming?api_key=' + common.movieApiKey + '&language=en-US&page=1'
 }
 
 const AdviceMovie = () => {

@@ -1,0 +1,17 @@
+.movieBlock {
+    width: 70vw;
+    height: 90vh;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.movieBlock img {
+    height: 100%;
+}
+
+.wrapper {
+    padding: 80px 0;
+    background: linear-gradient(45deg, black, transparent);
+}

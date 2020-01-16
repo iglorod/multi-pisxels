@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import classes from './MoviesList.module.css';
 import MoviePoster from './MoviePoster/MoviePoster';
-import { AuthContext } from '../../../../context/context';
+import { AuthContext } from '../../../../../context/context';
 
 const MovieSnapShot = (props) => {
     let context = useContext(AuthContext);
