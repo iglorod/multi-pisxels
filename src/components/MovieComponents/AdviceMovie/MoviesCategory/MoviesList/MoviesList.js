@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Slider from "react-slick";
 import axios from 'axios';
 
@@ -10,15 +10,18 @@ const MovieSnapShot = (props) => {
     let context = useContext(AuthContext);
     let [favoriteMovies, setFavoriteMovies] = useState([]);
 
-    if (context.isAuth) {
-        let queryParams = '?auth=' + localStorage.getItem('idToken') + '&orderBy="userId"&equalTo="' + localStorage.getItem('id') + '"';
+    useEffect(() => {
+        console.log(context.isAuth);
+        if (context.isAuth) {
+            let queryParams = '?auth=' + localStorage.getItem('idToken') + '&orderBy="userId"&equalTo="' + localStorage.getItem('id') + '"';
 
-        axios.get('https://multipixels-df150.firebaseio.com/favorite.json/' + queryParams)
-            .then(response => {
-                setFavoriteMovies(Object.values(response.data).map(item => item.movieId));
-            })
-            .catch(error => console.error(error));
-    }
+            axios.get('https://multipixels-df150.firebaseio.com/favorite.json/' + queryParams)
+                .then(response => {
+                    setFavoriteMovies(Object.values(response.data).map(item => item.movieId));
+                })
+                .catch(error => console.error(error));
+        }
+    }, [context.isAuth])
 
     let settings = {
         infinite: true,
@@ -88,6 +91,7 @@ const MovieSnapShot = (props) => {
                                     title={movie.title}
                                     overview={movie.overview}
                                     vote_average={movie.vote_average}
+                                    movie_id={movie.id}
                                     isFavorite={favoriteMovies.includes(movie.id)}
                                     favoriteClick={favoriteClickHandler.bind(this, movie.id)} />
                             </div>

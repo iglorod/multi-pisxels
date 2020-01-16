@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import classes from './MoviePoster.module.css';
 import { AuthContext } from '../../../../../../context/context';
+import { Link } from 'react-router-dom';
 
 const MoviePoster = (props) => {
     const context = useContext(AuthContext);
@@ -25,7 +26,14 @@ const MoviePoster = (props) => {
         <div className={classes.blackBackground}>
             <div style={imgStyle} className={classes.imageBackground}>
                 <div className={classes.hidenModal}>
-                    <div className={classes.title}><p>{props.title}</p></div>
+                    <Link to={{
+                        pathname: '/movie',
+                        state: {
+                            movieId: props.movie_id
+                        }
+                    }}>
+                        <div className={classes.title}><p>{props.title}</p></div>
+                    </Link>
                     <div className={classes.voteAverage}>{props.vote_average.toFixed(1)}/10</div>
                     <div className={classes.overview}>{props.overview}</div>
                     {favorite}

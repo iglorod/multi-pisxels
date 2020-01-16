@@ -5,6 +5,7 @@ import classes from './LatestMovie.module.css';
 import Image from '../../../assets/images/pngguru1.png';
 import NewIcon from '../../../assets/images/New.png';
 import Spinner from '../../UI/Spinner/Spinner';
+import { Link } from 'react-router-dom';
 import * as common from '../../../common/common';
 
 const LatestMovie = () => {
@@ -12,19 +13,20 @@ const LatestMovie = () => {
     let [spinnerShow, setSpinnerShow] = useState(true);
 
     useEffect(() => {
-      /*  axios.get('http://api.themoviedb.org/3/movie/latest?api_key=' + common.movieApiKey + '&language=en-US')
-            .then(response => {
-                console.log(response);
-                setLatestMovie(response.data);
-                setSpinnerShow(false);
-                console.log(latestMovie);
-            })*/
-            setLatestMovie({
-                poster_path: '/kBVzPzwl2kt45SbCeVrTQPgrWqR.jpg',
-                original_title: 'My Asian Mistress',
-                overview: "Seductive Asian beauties put on a real show for you in these 5 explosive scenes that prove the Orient really is the land of eroticism. From petite Katana in a schoolgirl outfit to busty Christina, all your Asian fantasies will be satisfied. Sex Art continues it's mastery of adult entertainment, delivering adult's hottest models in high end productions."
-            });
-            setSpinnerShow(false);
+        /*  axios.get('http://api.themoviedb.org/3/movie/latest?api_key=' + common.movieApiKey + '&language=en-US')
+              .then(response => {
+                  console.log(response);
+                  setLatestMovie(response.data);
+                  setSpinnerShow(false);
+                  console.log(latestMovie);
+              })*/
+        setLatestMovie({
+            id: 413323,
+            poster_path: '/kBVzPzwl2kt45SbCeVrTQPgrWqR.jpg',
+            original_title: 'My Asian Mistress',
+            overview: "Seductive Asian beauties put on a real show for you in these 5 explosive scenes that prove the Orient really is the land of eroticism. From petite Katana in a schoolgirl outfit to busty Christina, all your Asian fantasies will be satisfied. Sex Art continues it's mastery of adult entertainment, delivering adult's hottest models in high end productions."
+        });
+        setSpinnerShow(false);
     }, [])
 
     if (spinnerShow) return <Spinner />;
@@ -32,7 +34,14 @@ const LatestMovie = () => {
         <div className={classes.latestMovie} >
             <img src={Image} className={classes.backdrop} alt='backdrop' />
             <div>
-                <div className={classes.title}>{latestMovie.original_title}</div>
+                <Link to={{
+                    pathname: '/movie',
+                    state: {
+                        movieId: latestMovie.id
+                    }
+                }}>
+                    <div className={classes.title}>{latestMovie.original_title}</div>
+                </Link>
                 <div className={classes.overview}>{latestMovie.overview}</div>
             </div>
             <div className={classes.moviePoster}>

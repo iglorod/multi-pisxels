@@ -22,6 +22,12 @@
 .title {
     font-family: 'IM Fell Great Primer SC', serif;
     font-size: 60px;
+    color: white;
+    transition: all .5s;
+}
+
+.title:hover {
+    color: #b81d24;
 }
 
 .overview {

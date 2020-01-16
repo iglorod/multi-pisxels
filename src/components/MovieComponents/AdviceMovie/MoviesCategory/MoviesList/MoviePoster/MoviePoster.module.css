@@ -31,7 +31,12 @@
     z-index: 0 !important;
 }
 
+a {
+    text-decoration: none;
+}
+
 .title p {
+    color: white;
     font-family: 'Lato', sans-serif;
     font-size: 22px;
     font-weight: 100;
@@ -41,6 +46,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
+    transition: all .5s;
+}
+
+.title p:hover {
+    text-decoration: underline;
 }
 
 .voteAverage {
