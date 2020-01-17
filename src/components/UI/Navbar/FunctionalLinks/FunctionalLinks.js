@@ -9,8 +9,8 @@ const FuncitonalLinks = () => {
 
     let links = (
         <React.Fragment>
-            <FunctionalLink url='/my-list'>My list</FunctionalLink>
             <FunctionalLink url='/'>Top picks</FunctionalLink>
+            <FunctionalLink url='/my-list'>My list</FunctionalLink>
         </React.Fragment>
     )
     if (!authContext.isAuth) links = <FunctionalLink url='/'>Top picks</FunctionalLink>

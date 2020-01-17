@@ -11,10 +11,9 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('refreshToken') !== null) {
       const expiresIn = localStorage.getItem('expiresIn');
-      if (+(new Date().getTime() / 1000).toFixed(0) >= expiresIn) {
+      if (+Math.floor((new Date().getTime() / 1000)) >= expiresIn) {
         context.refreshToken();
       }
-
       context.signInByLocalData();
     }
   }, []);

@@ -1,0 +1,10 @@
+.slider {
+    padding: 10px 40px;
+}
+
+.favoriteMoviesTitle {
+    margin: 40px auto 20px auto;
+    font-size: 22px;
+    text-align: left;
+    padding-left: 50px;
+}

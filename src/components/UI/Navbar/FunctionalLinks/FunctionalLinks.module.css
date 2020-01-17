@@ -3,3 +3,7 @@
     justify-self: start;
     justify-content: space-around;
 }
+
+.linksArea > a:nth-child(2) {
+    margin-left: 10px;
+}

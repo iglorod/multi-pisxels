@@ -10,3 +10,7 @@
 .item:hover {
     background: #e50914;
 }
+
+.active {
+    background: #b81d24;
+}

@@ -1,0 +1,11 @@
+.noMoviesText {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    font-size: 26px;
+    color: #b81d24;
+}
+
+.noMoviesImg {
+    margin-top: 40px;
+    width: 180px;
+}

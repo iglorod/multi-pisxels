@@ -45,7 +45,14 @@ const LatestMovie = () => {
                 <div className={classes.overview}>{latestMovie.overview}</div>
             </div>
             <div className={classes.moviePoster}>
-                <img src={'https://image.tmdb.org/t/p/w400' + latestMovie.poster_path} alt={'movie poster'} />
+                <Link to={{
+                    pathname: '/movie',
+                    state: {
+                        movieId: latestMovie.id
+                    }
+                }}>
+                    <img src={'https://image.tmdb.org/t/p/w400' + latestMovie.poster_path} alt={'movie poster'} />
+                </Link>
                 <img src={NewIcon} alt='NEW' />
             </div>
         </div>

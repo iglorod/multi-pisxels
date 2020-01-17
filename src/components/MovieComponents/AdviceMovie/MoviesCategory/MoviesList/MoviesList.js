@@ -11,7 +11,6 @@ const MovieSnapShot = (props) => {
     let [favoriteMovies, setFavoriteMovies] = useState([]);
 
     useEffect(() => {
-        console.log(context.isAuth);
         if (context.isAuth) {
             let queryParams = '?auth=' + localStorage.getItem('idToken') + '&orderBy="userId"&equalTo="' + localStorage.getItem('id') + '"';
 
@@ -43,40 +42,48 @@ const MovieSnapShot = (props) => {
                 const movieWasFavorite = responseArray.reduce((wasFavorite, item) => (item.movieId === movieId) || wasFavorite, false);
 
                 if (movieWasFavorite === true) {
-                    let firebaseFavoriteId = null;
-                    for (let key in response.data) {
-                        if (response.data[key].movieId === movieId) {
-                            firebaseFavoriteId = key;
-                            break;
-                        }
-                    }
-
-                    queryParams = '?auth=' + localStorage.getItem('idToken');
-                    axios.delete('https://multipixels-df150.firebaseio.com/favorite/' + firebaseFavoriteId + '.json/' + queryParams)
-                        .then(() => {
-                            let favoriteMoviesClone = [...favoriteMovies];
-                            const removeIndex = favoriteMovies.indexOf(movieId);
-                            favoriteMoviesClone.splice(removeIndex, 1);
-                            setFavoriteMovies([...favoriteMoviesClone]);
-                        });
+                    deleteFromFavorite(response.data, movieId);
                 } else {
-                    const favorite = {
-                        movieId: movieId,
-                        userId: localStorage.getItem('id')
-                    }
-
-                    axios.post('https://multipixels-df150.firebaseio.com/favorite.json?auth=' + localStorage.getItem('idToken'), favorite)
-                        .then(() => {
-                            setFavoriteMovies(prevState => {
-                                return ([
-                                    ...prevState,
-                                    movieId
-                                ]);
-                            })
-                        });
+                    addToFavorite(movieId);
                 }
             })
             .catch(error => console.log(error));
+    }
+
+    const deleteFromFavorite = (responseData, movieId) => {
+        let firebaseFavoriteId = null;
+        for (let key in responseData) {
+            if (responseData[key].movieId === movieId) {
+                firebaseFavoriteId = key;
+                break;
+            }
+        }
+
+        const queryParams = '?auth=' + localStorage.getItem('idToken');
+        axios.delete('https://multipixels-df150.firebaseio.com/favorite/' + firebaseFavoriteId + '.json/' + queryParams)
+            .then(() => {
+                let favoriteMoviesClone = [...favoriteMovies];
+                const removeIndex = favoriteMovies.indexOf(movieId);
+                favoriteMoviesClone.splice(removeIndex, 1);
+                setFavoriteMovies([...favoriteMoviesClone]);
+            });
+    }
+
+    const addToFavorite = (movieId) => {
+        const favorite = {
+            movieId: movieId,
+            userId: localStorage.getItem('id')
+        }
+
+        axios.post('https://multipixels-df150.firebaseio.com/favorite.json?auth=' + localStorage.getItem('idToken'), favorite)
+            .then(() => {
+                setFavoriteMovies(prevState => {
+                    return ([
+                        ...prevState,
+                        movieId
+                    ]);
+                })
+            });
     }
 
     return (

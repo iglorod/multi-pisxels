@@ -21,7 +21,7 @@ export const AuthContextProvider = (props) => {
         setRefreshTokenTimer(+user.expires_in * 1000);
 
 
-        const expiresIn = +(new Date().getTime() / 1000).toFixed(0) + +user.expiresIn;
+        const expiresIn = Math.floor((new Date().getTime() / 1000)) + +user.expiresIn;
 
         localStorage.setItem('email', user.email);
         localStorage.setItem('id', user.localId);
@@ -70,7 +70,7 @@ export const AuthContextProvider = (props) => {
 
                 setRefreshTokenTimer(+responseData.expires_in * 1000);
                 
-                const expiresIn = +(new Date().getTime() / 1000).toFixed(0) + +responseData.expires_in;
+                const expiresIn = Math.floor((new Date().getTime() / 1000)) + +responseData.expires_in;
 
                 localStorage.setItem('idToken', responseData.id_token);
                 localStorage.setItem('refreshToken', responseData.refresh_token);

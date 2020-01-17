@@ -17,14 +17,14 @@ const MoviePage = (props) => {
             })
     }, [])
 
-    const pageStyle = {
-        background: 'black',
-        backgroundImage: 'url(https://image.tmdb.org/t/p/original/' + movieDetails.backdrop_path + ')',
-        backgroundSize: 'cover',
-        height: '100%'
-    }
-
     if (movieData !== null) {
+        const pageStyle = {
+            background: 'black',
+            backgroundImage: 'url(https://image.tmdb.org/t/p/original/' + movieData.backdrop_path + ')',
+            backgroundSize: 'cover',
+            height: '100%'
+        }
+        
         return (
             <div style={pageStyle}>
                 <MovieBlock movie={movieData} />
