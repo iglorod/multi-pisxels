@@ -1,0 +1,11 @@
+.footerInfo {
+    width: 50%;
+}
+
+.footerInfo > div {
+    text-align: justify;
+    margin: auto;
+    width: 60%;
+    font-size: 14px;
+    color: grey;
+}

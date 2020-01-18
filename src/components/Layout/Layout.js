@@ -7,6 +7,7 @@ import SignIn from '../Authorization/SignIn/SignIn';
 import SignUp from '../Authorization/SignUp/SignUp';
 import MoviePage from '../MovieComponents/MoviePage/MoviePage';
 import MyListPage from '../MovieComponents/MyListPage/MyListPage';
+import Footer from '../UI/Footer/Footer';
 
 const layout = () => {
     return (
@@ -19,6 +20,7 @@ const layout = () => {
                 <Route path='/my-list' component={MyListPage} exact />
                 <Route path='/' component={MultiPixels} />
             </Switch>
+            <Footer />
         </div>
     )
 }

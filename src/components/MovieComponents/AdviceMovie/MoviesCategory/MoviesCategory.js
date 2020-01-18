@@ -5,7 +5,7 @@ import MoviesList from './MoviesList/MoviesList';
 
 const moviesCategory = (props) => {
     return (
-        <div style={{zIndex: '200'}}>
+        <div style={{zIndex: '200', padding: '20px 0px'}}>
             <AdviceCategory category={props.data.category} />
             <MoviesList data={lalia.results/*props.data.movies*/} />
         </div>
