@@ -20,4 +20,5 @@
 
 .searchBlock {
     flex-grow: 4;
+    position: relative;
 }

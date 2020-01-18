@@ -1,0 +1,15 @@
+.searchResultsBlock {
+    position: absolute;
+    width: 70%;
+    left: 50%;
+    padding: 8px;
+    margin-top: 10px;
+    transform: translate(-50%, 0px);
+    background: rgba(0,0,0,0.95);
+    border-radius: 30px;
+    border: 2px solid rgba(129, 129, 129, 0.1);
+}
+
+.searchResultsBlock > a:nth-last-child(1) > div {
+    border: none;
+}

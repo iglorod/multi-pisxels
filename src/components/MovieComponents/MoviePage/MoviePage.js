@@ -4,6 +4,7 @@ import axios from 'axios';
 import MovieBlock from './MovieBlock/MovieBlock';
 import Spinner from '../../UI/Spinner/Spinner';
 import { movieApiKey } from '../../../common/common';
+import classes from './MoviePage.module.css';
 
 const MoviePage = (props) => {
     let [movieData, setMovieData] = useState(null);
@@ -15,7 +16,7 @@ const MoviePage = (props) => {
             .then(response => {
                 setMovieData(response.data);
             })
-    }, [])
+    }, [props.location.state.movieId])
 
     if (movieData !== null) {
         const pageStyle = {
@@ -24,7 +25,7 @@ const MoviePage = (props) => {
             backgroundSize: 'cover',
             height: '100%'
         }
-        
+
         return (
             <div style={pageStyle}>
                 <MovieBlock movie={movieData} />
@@ -32,7 +33,11 @@ const MoviePage = (props) => {
         )
     }
 
-    return <Spinner />
+    return (
+        <div className={classes.spinnerWrapper}>
+            <Spinner />
+        </div>
+    )
 }
 
 export default MoviePage;

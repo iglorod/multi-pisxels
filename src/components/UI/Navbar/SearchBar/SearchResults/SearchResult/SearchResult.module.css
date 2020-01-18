@@ -1,0 +1,14 @@
+.result {
+    color: white;
+    padding: 5px;
+    font-family: 'Nanum Gothic', sans-serif; 
+    border-bottom: 1px solid rgba(129, 129, 129, 0.1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all .5s;
+}
+
+.result:hover {
+    color: #b81d24;
+}
