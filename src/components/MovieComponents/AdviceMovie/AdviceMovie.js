@@ -19,7 +19,6 @@ const AdviceMovie = () => {
     let [showSpinner, setShowSpinner] = useState(false);
 
     let context = useContext(AuthContext);
-
     
     const fetchMovies = () => {
         for (let key in adviceLinks) {
@@ -56,8 +55,7 @@ const AdviceMovie = () => {
                     if (movieCategories.length === 0) fetchMovies(); // checking if movies wasn't loaded before
                 })
                 .catch(error => console.error(error));
-        } else if (movieCategories === 0)
-            fetchMovies(); // checking if movies wasn't loaded before
+        } else if (movieCategories.length === 0) fetchMovies();
     }, [context.isAuth]);
 
     const favoriteClickHandler = (movieId) => {
