@@ -14,7 +14,7 @@ const LatestMovie = () => {
     let [spinnerShow, setSpinnerShow] = useState(true);
 
     useEffect(() => {
-        axios.get('http://api.themoviedb.org/3/movie/latest?api_key=' + common.movieApiKey + '&language=en-US')
+        axios.get('https://api.themoviedb.org/3/movie/latest?api_key=' + common.movieApiKey + '&language=en-US')
             .then(response => {
                 setLatestMovie(response.data);
                 setSpinnerShow(false);

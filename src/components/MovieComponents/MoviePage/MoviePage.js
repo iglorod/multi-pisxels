@@ -4,7 +4,6 @@ import axios from 'axios';
 import MovieBlock from './MovieBlock/MovieBlock';
 import Spinner from '../../UI/Spinner/Spinner';
 import { movieApiKey } from '../../../common/common';
-import classes from './MoviePage.module.css';
 
 const MoviePage = (props) => {
     let [movieData, setMovieData] = useState(null);
