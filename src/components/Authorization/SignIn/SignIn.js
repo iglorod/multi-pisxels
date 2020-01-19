@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
 
 import classes from './SignIn.module.css';
 import Input from '../../UI/FormElements/Input/Input';
 import Button from '../../UI/FormElements/Button/Button';
 import { validation } from '../../../utility/validation';
 import { AuthContext } from '../../../context/context';
+import MainTag from '../../UI/MainTag/MainTag';
 
 const SignIn = (props) => {
     const authContext = useContext(AuthContext);
@@ -88,7 +88,7 @@ const SignIn = (props) => {
         const signInPromise = new Promise((resolve, reject) => {
             authContext.signIn(authData, resolve, reject);
         })
-        
+
         signInPromise.then(() => props.history.push('/'), error => console.error(error.message));
     }
 
@@ -112,10 +112,12 @@ const SignIn = (props) => {
     }
 
     return (
-        <form className={classes.signInForm} onSubmit={submitHandler} >
-            {inputs}
-            <Button text='Sign In' allIsValid={fieldsIsValid} />
-        </form>
+        <MainTag>
+            <form className={classes.signInForm} onSubmit={submitHandler} >
+                {inputs}
+                <Button text='Sign In' allIsValid={fieldsIsValid} />
+            </form>
+        </MainTag>
     )
 }
 

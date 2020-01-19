@@ -4,4 +4,5 @@
 
 .imgWrapper svg {
     width: 60%;
+    cursor: pointer;
 }

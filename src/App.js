@@ -13,8 +13,9 @@ function App() {
       const expiresIn = localStorage.getItem('expiresIn');
       if (+Math.floor((new Date().getTime() / 1000)) >= expiresIn) {
         context.refreshToken();
+      } else {
+        context.signInByLocalData();
       }
-      context.signInByLocalData();
     }
   }, []);
 

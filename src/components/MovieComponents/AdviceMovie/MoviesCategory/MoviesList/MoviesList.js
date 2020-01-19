@@ -4,87 +4,14 @@ import axios from 'axios';
 
 import classes from './MoviesList.module.css';
 import MoviePoster from './MoviePoster/MoviePoster';
-import { AuthContext } from '../../../../../context/context';
 
 const MovieSnapShot = (props) => {
-    let context = useContext(AuthContext);
-    let [favoriteMovies, setFavoriteMovies] = useState([]);
-
-    useEffect(() => {
-        if (context.isAuth) {
-            let queryParams = '?auth=' + localStorage.getItem('idToken') + '&orderBy="userId"&equalTo="' + localStorage.getItem('id') + '"';
-
-            axios.get('https://multipixels-df150.firebaseio.com/favorite.json/' + queryParams)
-                .then(response => {
-                    setFavoriteMovies(Object.values(response.data).map(item => item.movieId));
-                })
-                .catch(error => console.error(error));
-        }
-    }, [context.isAuth])
-
     let settings = {
         infinite: true,
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 3
     };
-
-    const favoriteClickHandler = (movieId) => {
-        let queryParams = '?auth=' + localStorage.getItem('idToken') + '&orderBy="userId"&equalTo="' + localStorage.getItem('id') + '"';
-
-        axios.get('https://multipixels-df150.firebaseio.com/favorite.json/' + queryParams)
-            .then(response => {
-                let responseArray = [];
-                for (let value of Object.values(response.data)) {
-                    responseArray.push(value);
-                }
-
-                const movieWasFavorite = responseArray.reduce((wasFavorite, item) => (item.movieId === movieId) || wasFavorite, false);
-
-                if (movieWasFavorite === true) {
-                    deleteFromFavorite(response.data, movieId);
-                } else {
-                    addToFavorite(movieId);
-                }
-            })
-            .catch(error => console.log(error));
-    }
-
-    const deleteFromFavorite = (responseData, movieId) => {
-        let firebaseFavoriteId = null;
-        for (let key in responseData) {
-            if (responseData[key].movieId === movieId) {
-                firebaseFavoriteId = key;
-                break;
-            }
-        }
-
-        const queryParams = '?auth=' + localStorage.getItem('idToken');
-        axios.delete('https://multipixels-df150.firebaseio.com/favorite/' + firebaseFavoriteId + '.json/' + queryParams)
-            .then(() => {
-                let favoriteMoviesClone = [...favoriteMovies];
-                const removeIndex = favoriteMovies.indexOf(movieId);
-                favoriteMoviesClone.splice(removeIndex, 1);
-                setFavoriteMovies([...favoriteMoviesClone]);
-            });
-    }
-
-    const addToFavorite = (movieId) => {
-        const favorite = {
-            movieId: movieId,
-            userId: localStorage.getItem('id')
-        }
-
-        axios.post('https://multipixels-df150.firebaseio.com/favorite.json?auth=' + localStorage.getItem('idToken'), favorite)
-            .then(() => {
-                setFavoriteMovies(prevState => {
-                    return ([
-                        ...prevState,
-                        movieId
-                    ]);
-                })
-            });
-    }
 
     return (
         <div className={classes.slider}>
@@ -99,8 +26,8 @@ const MovieSnapShot = (props) => {
                                     overview={movie.overview}
                                     vote_average={movie.vote_average}
                                     movie_id={movie.id}
-                                    isFavorite={favoriteMovies.includes(movie.id)}
-                                    favoriteClick={favoriteClickHandler.bind(this, movie.id)} />
+                                    isFavorite={props.favorite.includes(movie.id)}
+                                    favoriteClick={() => props.onFavoriteClick(movie.id) } />
                             </div>
                         )
                     })

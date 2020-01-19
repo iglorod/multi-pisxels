@@ -40,11 +40,16 @@
 
 .moviePoster {
     position: relative;
+    padding: 0 70px;
+}
+
+.moviePoster img:nth-child(1) {
+    max-height: 600px;
 }
 
 .moviePoster img:nth-child(2) {
     position: absolute;
     width: 80px;
-    left: -20px;
+    left: 50px;
     top: -20px;
 }

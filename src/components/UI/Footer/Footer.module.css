@@ -1,6 +1,9 @@
 .footerBlock {
     display: flex;
-    height: 100px;
+    height: 200px;
+    position: absolute;
+    bottom: 0px;
+    box-sizing: border-box;
     padding: 50px;
     justify-content: space-around;
     background: rgba(0, 0, .7);

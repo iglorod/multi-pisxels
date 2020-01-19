@@ -7,11 +7,11 @@ import classes from './Footer.module.css';
 
 const footer = () => {
     return (
-        <div className={classes.footerBlock}>
+        <footer className={classes.footerBlock}>
             <MovieDBLogo />
             <InfoBlock />
             <LinksBlock />
-        </div>
+        </footer>
     )
 }
 

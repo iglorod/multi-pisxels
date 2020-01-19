@@ -75,6 +75,8 @@ export const AuthContextProvider = (props) => {
                 localStorage.setItem('idToken', responseData.id_token);
                 localStorage.setItem('refreshToken', responseData.refresh_token);
                 localStorage.setItem('expiresIn', expiresIn);
+
+                signInByLocalData();
             })
     }
 

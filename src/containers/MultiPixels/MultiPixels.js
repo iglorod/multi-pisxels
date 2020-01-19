@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 
-import classes from './MultiPixels.module.css';
 import AdviceMovie from '../../components/MovieComponents/AdviceMovie/AdviceMovie';
 import LatestMovie from '../../components/MovieComponents/LatestMovie/LatestMovie';
-import { AuthContext } from '../../context/context';
+import MainTag from '../../components/UI/MainTag/MainTag';
 
 class MultiPixels extends Component {
     render() {
         return (
-            <main className={classes.content}>
+            <MainTag>
                 <LatestMovie />
                 <AdviceMovie />
-            </main>
+            </MainTag>
         )
     }
 }

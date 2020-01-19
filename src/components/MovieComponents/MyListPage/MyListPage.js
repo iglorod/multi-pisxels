@@ -4,6 +4,7 @@ import { AuthContext } from '../../../context/context';
 import { Redirect } from 'react-router-dom';
 import LatestMovie from '../LatestMovie/LatestMovie';
 import FavoriteMovies from './FavoriteMovies/FavoriteMovies';
+import MainTag from '../../UI/MainTag/MainTag';
 
 const MyListPage = () => {
     let context = useContext(AuthContext);
@@ -13,10 +14,10 @@ const MyListPage = () => {
     )
 
     return (
-        <div style={{ paddingTop: '100px' }}>
+        <MainTag>
             <LatestMovie />
             <FavoriteMovies />
-        </div>
+        </MainTag>
     )
 }
 
