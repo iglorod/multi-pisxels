@@ -58,7 +58,7 @@ const AdviceMovie = () => {
                 .catch(error => console.error(error));
         } else if (movieCategories === 0)
             fetchMovies(); // checking if movies wasn't loaded before
-    }, [context.isAuth, movieCategories]);
+    }, [context.isAuth]);
 
     const favoriteClickHandler = (movieId) => {
         let queryParams = '?auth=' + localStorage.getItem('idToken') + '&orderBy="userId"&equalTo="' + localStorage.getItem('id') + '"';

@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 import Slider from "react-slick";
-import axios from 'axios';
 
 import classes from './MoviesList.module.css';
 import MoviePoster from './MoviePoster/MoviePoster';
